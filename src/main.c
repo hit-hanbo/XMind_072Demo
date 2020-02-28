@@ -15,13 +15,13 @@
 */
 int main(void)
 {
-  uint32_t i = 0;
+    uint32_t i = 0;
 
-  /* TODO - Add your application code here */
+    /* TODO - Add your application code here */
 
-  /* Infinite loop */
-  while (1)
-  {
-	i++;
-  }
+    /* Infinite loop */
+    while (1)
+    {
+	  i++;
+    }
 }
