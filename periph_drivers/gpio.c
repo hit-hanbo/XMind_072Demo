@@ -1,23 +1,45 @@
 #include "gpio.h"
 
 /*
- *	 GPIO Initialize function
- *   @ Brief : Initialize GPIO PC0/PC6 as LED driver
- *   @ param : none
- *   @ retval: none
- *
+ * Matrix key initialize function
  */
-void bsp_lgg_gpio_init(void)
+
+void gpio_keyline_init(void)
 {
-	/*  1. enable GPIOC clock  */
-	RCC->AHBENR |= (1 << 19);
+	GPIO_InitTypeDef GPIO_InitStructure;
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Pin=line1|line2|line3|line4;
+	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;
+	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_Level_3;
+	GPIO_Init(GPIOA,&GPIO_InitStructure);
+}
 
-	/*  2. set PC0/PC6 0, OUT, PP, Pull-Down, Low-Speed */
-	GPIOC->ODR &= ~(1 << 0 | 1 << 6);
-	GPIOC->MODER = (GPIOC->MODER) & (~((0x3 << 0) | (0x3 << 12))) | ((1 << 0) | (1 << 6));
-	GPIOC->OTYPER &= ~(1 << 0 | 1 << 6);
-	GPIOC->PUPDR = (GPIOC->PUPDR) & (~((0x3 << 0) | (0x3 << 12))) | ((1 << 1) | (1 << 7));
-	GPIOC->OSPEEDR = (GPIOC->OSPEEDR) & (~(0x3 << 0 | 0x3 << 6));
 
+void gpio_keyROW_init(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Pin=row1|row2|row3|row4;
+	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_Level_3;
+	GPIO_Init(GPIOA,&GPIO_InitStructure);
+}
+
+
+/*
+ * LED initialize function
+ */
+void gpio_led_init(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7;
+	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_Level_3;
+	GPIO_Init(GPIOB,&GPIO_InitStructure);
 }
 
