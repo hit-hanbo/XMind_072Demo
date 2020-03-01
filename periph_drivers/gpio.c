@@ -28,6 +28,41 @@ void wpc_gpio_keyrow_init(void)
 	GPIO_Init(GPIOA,&GPIO_InitStructure);
 }
 
+/*
+ * 功能：矩阵键盘扫描  4*4  V2.0
+ * 时间：2020.02.29-----wpc
+ */
+uint16_t wpc_keyscan(void)
+{
+	uint16_t a,ReadValue,KEY=0;
+	for(a=0;a<4;a++)
+	{
+		GPIO_WriteBit(GPIOA, GPIO_Pin_All, Bit_RESET);
+		GPIOA->ODR = ~(1 << a);
+		ReadValue = GPIO_ReadInputData(GPIOA);
+		ReadValue &= 0xF0;
+		if(ReadValue != 0XF0)
+		{
+		    if(ReadValue == 0XE0)
+		    {
+		    	 KEY = 4*a+1;
+		    }
+		    else if(ReadValue == 0XD0)
+		    {
+		        KEY = 4*a+2;
+		    }
+	        else if(ReadValue == 0XB0)
+		    {
+		        KEY = 4*a+3;
+		    }
+	        else if(ReadValue == 0X70)
+		    {
+			    KEY = 4*a+4;
+		    }
+		}
+	}
+	return KEY;
+}
 
 
 

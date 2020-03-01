@@ -22,6 +22,6 @@
 
 void wpc_gpio_keyline_init(void);
 void wpc_gpio_keyrow_init(void);
-
+uint16_t wpc_keyscan(void)£»
 
 #endif
