@@ -8,7 +8,7 @@
 #include "../periph_drivers/gpio.h"
 
 
-void HiSTM_GP_TIM14_Init(void)
+void LYF_GP_TIM14_Init(void)
 {
 	TIM_TimeBaseInitTypeDef  TIM_Base_Init_Struct;
 	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM14EN, ENABLE);

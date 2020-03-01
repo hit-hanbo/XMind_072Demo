@@ -16,7 +16,7 @@
 /*
  *
  */
-void HiSTM_GP_TIM14_Init(void);
+void LYF_GP_TIM14_Init(void);
 
 
 #endif /* TIMER_H_ */

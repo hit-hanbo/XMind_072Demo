@@ -27,10 +27,10 @@ int main(void)
 {
 
 
-	HiSTM_GPIO_Init();
-	LGG_LED_R_ON;
-    LGG_LED_G_OFF;
-    HiSTM_GP_TIM14_Init();
+	LYF_GPIO_Init();
+	LYF_LED_R_ON;
+    LYF_LED_G_OFF;
+    LYF_GP_TIM14_Init();
     while(1);
 
 }
