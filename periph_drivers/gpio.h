@@ -20,8 +20,8 @@
 #define row3                GPIO_Pin_6
 #define row4                GPIO_Pin_7
 
-void gpio_keyline_init(void);
-void gpio_keyROW_init(void);
-void gpio_led_init(void);
+void wpc_gpio_keyline_init(void);
+void wpc_gpio_keyrow_init(void);
+
 
 #endif

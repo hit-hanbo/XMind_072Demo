@@ -4,7 +4,7 @@
  * Matrix key initialize function
  */
 
-void gpio_keyline_init(void)
+void wpc_gpio_keyline_init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
@@ -17,7 +17,7 @@ void gpio_keyline_init(void)
 }
 
 
-void gpio_keyROW_init(void)
+void wpc_gpio_keyrow_init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
@@ -29,17 +29,5 @@ void gpio_keyROW_init(void)
 }
 
 
-/*
- * LED initialize function
- */
-void gpio_led_init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
-	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7;
-	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_Level_3;
-	GPIO_Init(GPIOB,&GPIO_InitStructure);
-}
+
 
