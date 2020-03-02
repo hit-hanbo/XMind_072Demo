@@ -77,12 +77,14 @@ void EXTI4_15_IRQHandler(void)
 	 EXTI_ClearITPendingBit(EXTI_Line13);
 
 
-	}else if((EXTI->PR & EXTI_Line14) != (uint32_t)RESET)
+	}
+	else if((EXTI->PR & EXTI_Line14) != (uint32_t)RESET)
 		{
 			GPIOA->ODR ^= (1 << 9);
 			EXTI_ClearITPendingBit(EXTI_Line14);
 
-		}else if((EXTI->PR & EXTI_Line15) != (uint32_t)RESET)
+		}
+	else if((EXTI->PR & EXTI_Line15) != (uint32_t)RESET)
 		{
 			GPIOB->ODR ^= (1 << 14);
 			EXTI_ClearITPendingBit(EXTI_Line15);
